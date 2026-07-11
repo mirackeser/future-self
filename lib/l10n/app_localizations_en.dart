@@ -1511,4 +1511,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get challengeTenPercent => 'Make 10% progress on a goal';
+
+  @override
+  String get bonusXpTitle => 'Earn bonus XP';
+
+  @override
+  String bonusXpSubtitle(int xp) {
+    return 'Watch a short ad, earn +$xp XP';
+  }
+
+  @override
+  String get watchAdAction => 'Watch';
+
+  @override
+  String get bonusXpComeBackTomorrow => 'Come back tomorrow';
+
+  @override
+  String bonusXpEarned(int xp) {
+    return 'You earned +$xp XP!';
+  }
+
+  @override
+  String get adRewardFailed =>
+      'No reward this time — the ad couldn\'t be loaded or wasn\'t completed. You can try again later.';
+
+  @override
+  String streakRestoreTitle(int days) {
+    return 'Your $days-day streak was reset';
+  }
+
+  @override
+  String get streakRestoreAction => 'Watch an ad to restore your streak';
+
+  @override
+  String streakRestored(int days) {
+    return 'Streak restored: $days days';
+  }
 }

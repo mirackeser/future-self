@@ -33,6 +33,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- TODO(admob): Bu Google'ın TEST App ID'si. Production'a çıkmadan
+             önce AdMob konsolundaki gerçek Android App ID ile değiştir. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
         <!-- flutter_local_notifications: zamanlanmış bildirim alıcıları. -->
         <receiver
             android:exported="false"

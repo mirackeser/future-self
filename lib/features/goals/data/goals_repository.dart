@@ -168,6 +168,12 @@ class GoalsRepository {
         now: now,
         freezesAvailable: refilled.freezesAvailable,
       );
+      // Seri bu güncellemeyle kırıldıysa (1'e düştü, öncekisi > 1'di)
+      // kırılma anı ve eski değer kaydedilir — reklamla Seri Kurtarma
+      // 48 saat içinde bunları geri yükler (RewardsRepository).
+      // Kırılma yoksa null geçilir; copyWith mevcut kaydı korur.
+      final streakBroke =
+          streakResult.newStreak == 1 && refilled.currentStreak > 1;
       final updatedProgress = refilled.copyWith(
         totalXp: refilled.totalXp + goal.xpReward,
         currentStreak: streakResult.newStreak,
@@ -177,6 +183,9 @@ class GoalsRepository {
             : refilled.longestStreakEver,
         lastActiveDate: now,
         freezesAvailable: streakResult.newFreezesAvailable,
+        streakBrokenAt: streakBroke ? now : null,
+        previousStreakBeforeBreak:
+            streakBroke ? refilled.currentStreak : null,
       );
       tx.set(userRef, updatedProgress.toMap(), SetOptions(merge: true));
 

@@ -202,5 +202,128 @@ void main() {
       expect(result.freezesAvailable, 2);
       expect(result.lastFreezeRefillMonth, '2026-07');
     });
+
+    test('ay değişince seri kurtarma sayacı da sıfırlanır', () {
+      const progress = UserProgress(
+        streakRestoresUsedThisMonth: 2,
+        lastFreezeRefillMonth: '2026-06',
+      );
+
+      final refilled =
+          UserProgress.refillFreezesIfNeeded(progress, DateTime(2026, 7, 6));
+
+      expect(refilled.streakRestoresUsedThisMonth, 0);
+    });
+
+    test('aynı ay içinde kurtarma sayacına dokunulmaz', () {
+      const progress = UserProgress(
+        streakRestoresUsedThisMonth: 1,
+        lastFreezeRefillMonth: '2026-07',
+      );
+
+      final result =
+          UserProgress.refillFreezesIfNeeded(progress, DateTime(2026, 7, 20));
+
+      expect(result.streakRestoresUsedThisMonth, 1);
+    });
+  });
+
+  group('dayKey', () {
+    test('yyyy-MM-dd, tek haneler sıfırla doldurulur', () {
+      expect(UserProgress.dayKey(DateTime(2026, 7, 6)), '2026-07-06');
+      expect(UserProgress.dayKey(DateTime(2026, 11, 23)), '2026-11-23');
+    });
+  });
+
+  group('canRestoreStreak', () {
+    final now = DateTime(2026, 7, 6, 14, 0);
+
+    UserProgress broken({
+      DateTime? brokenAt,
+      int previousStreak = 14,
+      int restoresUsed = 0,
+    }) {
+      return UserProgress(
+        currentStreak: 1,
+        streakBrokenAt: brokenAt ?? now.subtract(const Duration(hours: 3)),
+        previousStreakBeforeBreak: previousStreak,
+        streakRestoresUsedThisMonth: restoresUsed,
+        lastFreezeRefillMonth: '2026-07',
+      );
+    }
+
+    test('48 saat içinde ve hak varken true', () {
+      expect(broken().canRestoreStreak(now), isTrue);
+    });
+
+    test('kırılma kaydı yoksa false', () {
+      expect(const UserProgress().canRestoreStreak(DateTime(2026, 7, 6)),
+          isFalse);
+    });
+
+    test('48 saat geçtiyse false, sınırın hemen içindeyse true', () {
+      expect(
+        broken(brokenAt: now.subtract(const Duration(hours: 49)))
+            .canRestoreStreak(now),
+        isFalse,
+      );
+      expect(
+        broken(brokenAt: now.subtract(const Duration(hours: 47)))
+            .canRestoreStreak(now),
+        isTrue,
+      );
+    });
+
+    test('aylık hak (2) dolduysa false', () {
+      expect(broken(restoresUsed: 2).canRestoreStreak(now), isFalse);
+      expect(broken(restoresUsed: 1).canRestoreStreak(now), isTrue);
+    });
+  });
+
+  group('yeni alanların map dönüşümü ve copyWith', () {
+    test('toMap/fromMap gidiş-dönüşü yeni alanları korur', () {
+      final brokenAt = DateTime(2026, 7, 5, 10, 0);
+      final progress = UserProgress(
+        totalXp: 90,
+        currentStreak: 1,
+        lastBonusXpAdDate: '2026-07-06',
+        streakBrokenAt: brokenAt,
+        previousStreakBeforeBreak: 9,
+        streakRestoresUsedThisMonth: 1,
+      );
+
+      final roundTrip = UserProgress.fromMap(progress.toMap());
+
+      expect(roundTrip.lastBonusXpAdDate, '2026-07-06');
+      expect(roundTrip.streakBrokenAt, brokenAt);
+      expect(roundTrip.previousStreakBeforeBreak, 9);
+      expect(roundTrip.streakRestoresUsedThisMonth, 1);
+    });
+
+    test('eski dokümanlarda (alanlar yok) güvenli varsayılanlar', () {
+      final progress = UserProgress.fromMap({'totalXp': 10});
+
+      expect(progress.lastBonusXpAdDate, '');
+      expect(progress.streakBrokenAt, isNull);
+      expect(progress.previousStreakBeforeBreak, 0);
+      expect(progress.streakRestoresUsedThisMonth, 0);
+    });
+
+    test('copyWith clearStreakBreak kırılma kaydını temizler', () {
+      final progress = UserProgress(
+        streakBrokenAt: DateTime(2026, 7, 5),
+        previousStreakBeforeBreak: 9,
+      );
+
+      final cleared = progress.copyWith(clearStreakBreak: true);
+
+      expect(cleared.streakBrokenAt, isNull);
+      expect(cleared.previousStreakBeforeBreak, 0);
+
+      // Bayrak olmadan mevcut kayıt korunur (?? deseni null'a çekemez).
+      final kept = progress.copyWith(currentStreak: 3);
+      expect(kept.streakBrokenAt, isNotNull);
+      expect(kept.previousStreakBeforeBreak, 9);
+    });
   });
 }

@@ -949,5 +949,42 @@
   "challengeMissionNote": "Bir göreve not ekle",
   "challengeReflection": "Coach'ın günün sorusunu yanıtla",
   "challengeComment": "Hayat Dersleri'nde bir gönderiye yorum yap",
-  "challengeTenPercent": "Bir hedefte %10 ilerleme kaydet"
+  "challengeTenPercent": "Bir hedefte %10 ilerleme kaydet",
+  "bonusXpTitle": "Bonus XP kazan",
+  "bonusXpSubtitle": "Kısa bir reklam izle, +{xp} XP kazan",
+  "@bonusXpSubtitle": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "watchAdAction": "İzle",
+  "bonusXpComeBackTomorrow": "Yarın tekrar gel",
+  "bonusXpEarned": "+{xp} XP kazandın!",
+  "@bonusXpEarned": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "adRewardFailed": "Ödül alınamadı — reklam yüklenemedi ya da tamamlanmadı. Sonra tekrar deneyebilirsin.",
+  "streakRestoreTitle": "{days} günlük serin sıfırlandı",
+  "@streakRestoreTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "streakRestoreAction": "Reklam izle, serini geri kazan",
+  "streakRestored": "Serin geri döndü: {days} gün",
+  "@streakRestored": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  }
 }

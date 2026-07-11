@@ -14,6 +14,8 @@ import '../../challenges/presentation/challenges_providers.dart';
 import '../../chapters/presentation/chapters_providers.dart';
 import '../../goals/presentation/goals_providers.dart';
 import '../../goals/presentation/widgets/quick_update_sheet.dart';
+import '../../rewards/presentation/widgets/bonus_xp_card.dart';
+import '../../rewards/presentation/widgets/streak_restore_card.dart';
 
 /// Ana ekran: kullanıcı durumu, bugünkü ilerleme, Future Self Status
 /// ve dikkat bekleyen ilk 3 hedef.
@@ -80,8 +82,12 @@ class _DashboardBody extends ConsumerWidget {
         if (goals.isEmpty)
           const _EmptyState()
         else ...[
+          // Kırık seri kurtarma banner'ı (koşulları sağlanmıyorsa boş).
+          const StreakRestoreCard(),
           _TodayProgressCard(goals: goals, progress: progress, now: now),
           const SizedBox(height: 12),
+          // Günlük bonus XP reklam kartı (desteklenmeyen platformda boş).
+          const BonusXpCard(),
           const _WeeklyChallengeCard(),
           _StatusCard(
             text: futureSelfStatus(
