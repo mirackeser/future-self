@@ -27,10 +27,20 @@ class UserProgress {
     this.lastActiveDate,
     this.freezesAvailable = monthlyFreezeAllowance,
     this.lastFreezeRefillMonth = '',
+    this.lastBonusXpAdDate = '',
+    this.streakBrokenAt,
+    this.previousStreakBeforeBreak = 0,
+    this.streakRestoresUsedThisMonth = 0,
   });
 
   /// Her ay yenilenen seri dondurma hakkı.
   static const int monthlyFreezeAllowance = 2;
+
+  /// Her ay yenilenen, reklamla seri kurtarma hakkı.
+  static const int monthlyStreakRestoreAllowance = 2;
+
+  /// Kırılan seri, kırılma anından itibaren bu süre içinde kurtarılabilir.
+  static const Duration streakRestoreWindow = Duration(hours: 48);
 
   final int totalXp;
   final int currentStreak;
@@ -45,6 +55,21 @@ class UserProgress {
 
   /// Hakların en son yenilendiği ay, "yyyy-MM".
   final String lastFreezeRefillMonth;
+
+  /// Günlük bonus XP reklamının en son izlendiği gün, "yyyy-MM-dd"
+  /// (boş: hiç izlenmedi).
+  final String lastBonusXpAdDate;
+
+  /// Serinin en son kırıldığı an; kurtarma penceresi buradan başlar.
+  /// null: kurtarılabilecek kırık seri yok.
+  final DateTime? streakBrokenAt;
+
+  /// Kırılma anındaki seri değeri — kurtarmada geri yazılacak sayı.
+  final int previousStreakBeforeBreak;
+
+  /// Bu ay reklamla yapılan seri kurtarma sayısı; ay değişince
+  /// [refillFreezesIfNeeded] sıfırlar.
+  final int streakRestoresUsedThisMonth;
 
   /// [level] seviyesinden bir sonrakine geçmek için gereken XP.
   static int xpToNextLevel(int level) => 100 + (level - 1) * 25;
@@ -74,7 +99,12 @@ class UserProgress {
   static String monthKey(DateTime date) =>
       '${date.year}-${date.month.toString().padLeft(2, '0')}';
 
-  /// Ay değiştiyse dondurma haklarını yeniler; aynı ay içinde dokunmaz.
+  /// "yyyy-MM-dd" gün anahtarı (günlük bonus XP kilidi için).
+  static String dayKey(DateTime date) =>
+      '${monthKey(date)}-${date.day.toString().padLeft(2, '0')}';
+
+  /// Ay değiştiyse dondurma haklarını yeniler ve reklamla seri kurtarma
+  /// sayacını sıfırlar; aynı ay içinde dokunmaz.
   static UserProgress refillFreezesIfNeeded(
     UserProgress current,
     DateTime now,
@@ -83,8 +113,21 @@ class UserProgress {
     if (current.lastFreezeRefillMonth == key) return current;
     return current.copyWith(
       freezesAvailable: monthlyFreezeAllowance,
+      streakRestoresUsedThisMonth: 0,
       lastFreezeRefillMonth: key,
     );
+  }
+
+  /// Kırık seri şu an reklamla kurtarılabilir mi?
+  ///
+  /// Aylık hak sayısının doğru okunması için önce
+  /// [refillFreezesIfNeeded] uygulanmış olmalıdır.
+  bool canRestoreStreak(DateTime now) {
+    final brokenAt = streakBrokenAt;
+    return brokenAt != null &&
+        previousStreakBeforeBreak > 1 &&
+        now.difference(brokenAt) <= streakRestoreWindow &&
+        streakRestoresUsedThisMonth < monthlyStreakRestoreAllowance;
   }
 
   /// İlerleme kaydedildiğinde yeni streak durumu.
@@ -129,6 +172,8 @@ class UserProgress {
     return result(1);
   }
 
+  /// [clearStreakBreak] true olduğunda kırılma kaydı temizlenir
+  /// (copyWith'in ?? deseni null'a çekmeye izin vermediği için).
   UserProgress copyWith({
     int? totalXp,
     int? currentStreak,
@@ -136,6 +181,11 @@ class UserProgress {
     DateTime? lastActiveDate,
     int? freezesAvailable,
     String? lastFreezeRefillMonth,
+    String? lastBonusXpAdDate,
+    DateTime? streakBrokenAt,
+    int? previousStreakBeforeBreak,
+    int? streakRestoresUsedThisMonth,
+    bool clearStreakBreak = false,
   }) {
     return UserProgress(
       totalXp: totalXp ?? this.totalXp,
@@ -145,6 +195,14 @@ class UserProgress {
       freezesAvailable: freezesAvailable ?? this.freezesAvailable,
       lastFreezeRefillMonth:
           lastFreezeRefillMonth ?? this.lastFreezeRefillMonth,
+      lastBonusXpAdDate: lastBonusXpAdDate ?? this.lastBonusXpAdDate,
+      streakBrokenAt:
+          clearStreakBreak ? null : (streakBrokenAt ?? this.streakBrokenAt),
+      previousStreakBeforeBreak: clearStreakBreak
+          ? 0
+          : (previousStreakBeforeBreak ?? this.previousStreakBeforeBreak),
+      streakRestoresUsedThisMonth:
+          streakRestoresUsedThisMonth ?? this.streakRestoresUsedThisMonth,
     );
   }
 
@@ -157,6 +215,11 @@ class UserProgress {
           lastActiveDate == null ? null : Timestamp.fromDate(lastActiveDate!),
       'freezesAvailable': freezesAvailable,
       'lastFreezeRefillMonth': lastFreezeRefillMonth,
+      'lastBonusXpAdDate': lastBonusXpAdDate,
+      'streakBrokenAt':
+          streakBrokenAt == null ? null : Timestamp.fromDate(streakBrokenAt!),
+      'previousStreakBeforeBreak': previousStreakBeforeBreak,
+      'streakRestoresUsedThisMonth': streakRestoresUsedThisMonth,
     };
   }
 
@@ -171,6 +234,12 @@ class UserProgress {
       freezesAvailable:
           map['freezesAvailable'] as int? ?? monthlyFreezeAllowance,
       lastFreezeRefillMonth: map['lastFreezeRefillMonth'] as String? ?? '',
+      lastBonusXpAdDate: map['lastBonusXpAdDate'] as String? ?? '',
+      streakBrokenAt: (map['streakBrokenAt'] as Timestamp?)?.toDate(),
+      previousStreakBeforeBreak:
+          map['previousStreakBeforeBreak'] as int? ?? 0,
+      streakRestoresUsedThisMonth:
+          map['streakRestoresUsedThisMonth'] as int? ?? 0,
     );
   }
 }

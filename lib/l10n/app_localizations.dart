@@ -2442,6 +2442,60 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Bir hedefte %10 ilerleme kaydet'**
   String get challengeTenPercent;
+
+  /// No description provided for @bonusXpTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bonus XP kazan'**
+  String get bonusXpTitle;
+
+  /// No description provided for @bonusXpSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kısa bir reklam izle, +{xp} XP kazan'**
+  String bonusXpSubtitle(int xp);
+
+  /// No description provided for @watchAdAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'İzle'**
+  String get watchAdAction;
+
+  /// No description provided for @bonusXpComeBackTomorrow.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yarın tekrar gel'**
+  String get bonusXpComeBackTomorrow;
+
+  /// No description provided for @bonusXpEarned.
+  ///
+  /// In tr, this message translates to:
+  /// **'+{xp} XP kazandın!'**
+  String bonusXpEarned(int xp);
+
+  /// No description provided for @adRewardFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödül alınamadı — reklam yüklenemedi ya da tamamlanmadı. Sonra tekrar deneyebilirsin.'**
+  String get adRewardFailed;
+
+  /// No description provided for @streakRestoreTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'{days} günlük serin sıfırlandı'**
+  String streakRestoreTitle(int days);
+
+  /// No description provided for @streakRestoreAction.
+  ///
+  /// In tr, this message translates to:
+  /// **'Reklam izle, serini geri kazan'**
+  String get streakRestoreAction;
+
+  /// No description provided for @streakRestored.
+  ///
+  /// In tr, this message translates to:
+  /// **'Serin geri döndü: {days} gün'**
+  String streakRestored(int days);
 }
 
 class _AppLocalizationsDelegate

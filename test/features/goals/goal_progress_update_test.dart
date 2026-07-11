@@ -230,6 +230,77 @@ void main() {
     });
   });
 
+  group('seri kırılma kaydı (Seri Kurtarma için)', () {
+    Future<void> seedUserProgress(UserProgress progress) =>
+        firestore.collection('users').doc(uid).set(progress.toMap());
+
+    Future<UserProgress> readUserProgress() async {
+      final doc = await firestore.collection('users').doc(uid).get();
+      return UserProgress.fromMap(doc.data()!);
+    }
+
+    test('3+ gün aradan sonra güncelleme: seri 1\'e düşer, kırılma anı ve '
+        'eski değer kaydedilir', () async {
+      await seedGoal(numericGoal());
+      await seedUserProgress(
+        UserProgress(
+          currentStreak: 5,
+          longestStreakEver: 5,
+          lastActiveDate: DateTime.now().subtract(const Duration(days: 3)),
+          freezesAvailable: 2, // 3+ gün arada freeze de kurtarmaz
+          lastFreezeRefillMonth: UserProgress.monthKey(DateTime.now()),
+        ),
+      );
+
+      await repository.updateGoalProgress('g1', newCurrentValue: 80);
+
+      final progress = await readUserProgress();
+      expect(progress.currentStreak, 1);
+      expect(progress.streakBrokenAt, isNotNull);
+      expect(progress.previousStreakBeforeBreak, 5);
+    });
+
+    test('seri devam ederken kırılma kaydı oluşmaz', () async {
+      await seedGoal(numericGoal());
+      await seedUserProgress(
+        UserProgress(
+          currentStreak: 3,
+          lastActiveDate: DateTime.now().subtract(const Duration(days: 1)),
+          lastFreezeRefillMonth: UserProgress.monthKey(DateTime.now()),
+        ),
+      );
+
+      await repository.updateGoalProgress('g1', newCurrentValue: 80);
+
+      final progress = await readUserProgress();
+      expect(progress.currentStreak, 4);
+      expect(progress.streakBrokenAt, isNull);
+      expect(progress.previousStreakBeforeBreak, 0);
+    });
+
+    test('mevcut kırılma kaydı sonraki normal güncellemede silinmez '
+        '(48 saatlik pencere sürüyor olabilir)', () async {
+      await seedGoal(numericGoal());
+      final brokenAt = DateTime.now().subtract(const Duration(hours: 20));
+      await seedUserProgress(
+        UserProgress(
+          currentStreak: 1,
+          lastActiveDate: DateTime.now().subtract(const Duration(days: 1)),
+          lastFreezeRefillMonth: UserProgress.monthKey(DateTime.now()),
+          streakBrokenAt: brokenAt,
+          previousStreakBeforeBreak: 7,
+        ),
+      );
+
+      await repository.updateGoalProgress('g1', newCurrentValue: 80);
+
+      final progress = await readUserProgress();
+      expect(progress.currentStreak, 2);
+      expect(progress.streakBrokenAt, brokenAt);
+      expect(progress.previousStreakBeforeBreak, 7);
+    });
+  });
+
   group('createSingleGoal', () {
     test('şablon + entry\'den hedef yazar (initial = current)', () async {
       await repository.createSingleGoal(

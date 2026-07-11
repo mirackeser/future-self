@@ -1442,4 +1442,40 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get challengeTenPercent => 'Bir hedefte %10 ilerleme kaydet';
+
+  @override
+  String get bonusXpTitle => 'Bonus XP kazan';
+
+  @override
+  String bonusXpSubtitle(int xp) {
+    return 'Kısa bir reklam izle, +$xp XP kazan';
+  }
+
+  @override
+  String get watchAdAction => 'İzle';
+
+  @override
+  String get bonusXpComeBackTomorrow => 'Yarın tekrar gel';
+
+  @override
+  String bonusXpEarned(int xp) {
+    return '+$xp XP kazandın!';
+  }
+
+  @override
+  String get adRewardFailed =>
+      'Ödül alınamadı — reklam yüklenemedi ya da tamamlanmadı. Sonra tekrar deneyebilirsin.';
+
+  @override
+  String streakRestoreTitle(int days) {
+    return '$days günlük serin sıfırlandı';
+  }
+
+  @override
+  String get streakRestoreAction => 'Reklam izle, serini geri kazan';
+
+  @override
+  String streakRestored(int days) {
+    return 'Serin geri döndü: $days gün';
+  }
 }

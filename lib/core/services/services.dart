@@ -4,6 +4,7 @@
 library;
 
 export 'account_deletion_service.dart';
+export 'ads_service.dart';
 export 'auth_service.dart';
 export 'firebase_service.dart';
 export 'local_notifications_service.dart';

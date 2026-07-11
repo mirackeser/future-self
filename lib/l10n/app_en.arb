@@ -389,5 +389,14 @@
   "challengeMissionNote": "Add a note to a mission",
   "challengeReflection": "Answer the coach's question of the day",
   "challengeComment": "Comment on a Life Lessons post",
-  "challengeTenPercent": "Make 10% progress on a goal"
+  "challengeTenPercent": "Make 10% progress on a goal",
+  "bonusXpTitle": "Earn bonus XP",
+  "bonusXpSubtitle": "Watch a short ad, earn +{xp} XP",
+  "watchAdAction": "Watch",
+  "bonusXpComeBackTomorrow": "Come back tomorrow",
+  "bonusXpEarned": "You earned +{xp} XP!",
+  "adRewardFailed": "No reward this time — the ad couldn't be loaded or wasn't completed. You can try again later.",
+  "streakRestoreTitle": "Your {days}-day streak was reset",
+  "streakRestoreAction": "Watch an ad to restore your streak",
+  "streakRestored": "Streak restored: {days} days"
 }
