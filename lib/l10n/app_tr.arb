@@ -1,0 +1,953 @@
+{
+  "@@locale": "tr",
+  "appTitle": "Future Self",
+  "@appTitle": {
+    "description": "Uygulama adı"
+  },
+  "save": "Kaydet",
+  "cancel": "Vazgeç",
+  "delete": "Sil",
+  "edit": "Düzenle",
+  "add": "Ekle",
+  "continueButton": "Devam et",
+  "continueShort": "Devam",
+  "back": "Geri",
+  "loading": "Yükleniyor…",
+  "error": "Bir şeyler ters gitti",
+  "retry": "Tekrar dene",
+  "yes": "Evet",
+  "no": "Hayır",
+  "close": "Kapat",
+  "done": "Tamam",
+  "settings": "Ayarlar",
+  "signOut": "Çıkış yap",
+  "deleteAccountAction": "Hesabı Sil",
+  "deleteAccountDialogTitle": "Hesabını silmek istediğine emin misin?",
+  "deleteAccountDialogBody": "Bu işlem GERİ ALINAMAZ. Tüm hedeflerin, geçmişin, mission'ların, paylaşımların ve tüm verilerin kalıcı olarak silinecek.",
+  "deleteAccountConfirmWord": "SİL",
+  "deleteAccountConfirmHint": "Onaylamak için \"{word}\" yaz",
+  "@deleteAccountConfirmHint": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteAccountConfirmButton": "Hesabımı Sil",
+  "deleteAccountFailed": "Hesap silinemedi, tekrar dene.",
+  "accountDeletedMessage": "Hesabın silindi.",
+  "reauthPasswordTitle": "Şifreni doğrula",
+  "reauthPasswordBody": "Güvenlik için hesabını silmeden önce şifreni tekrar girmen gerekiyor.",
+  "reauthConfirmButton": "Doğrula",
+  "comingSoon": "Yakında",
+  "today": "Bugün",
+  "welcomeTitle": "Hoş geldin!",
+  "welcomeSubtitle": "Hesabın hazır. Şimdi seni biraz tanıyalım — her gün attığın küçük adımlar, gelecekteki halini şekillendirecek.",
+  "categoriesTitle": "Hangi alanlarda ilerlemek istiyorsun?",
+  "categoriesSubtitle": "İstediğin kadar seç, sonra değiştirebilirsin.",
+  "currentStateTitle": "Şu an neredesin?",
+  "currentStateSubtitle": "Bugünkü durumunu ve hedefini gir. Hepsi opsiyonel, sonra da doldurabilirsin.",
+  "addMetric": "Metrik ekle",
+  "addMetricFor": "{category} için metrik ekle",
+  "@addMetricFor": {
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "nowLabel": "Şimdi",
+  "targetLabel": "Hedef",
+  "decreasingHint": "Hedef, şimdikinden düşük olmalı",
+  "currentLevelLabel": "Şimdiki seviye",
+  "targetLevelLabel": "Hedef seviye",
+  "freeTextHint": "Hedefin ne?",
+  "notificationsTitle": "Future You seninle konuşsun mu?",
+  "notificationsSubtitle": "Günde birkaç kez, ilerlemeni fark ettiren nazik hatırlatmalar gönderelim. İstediğin zaman kapatabilirsin.",
+  "morningMotivation": "Sabah motivasyonu",
+  "streakReminders": "Seri hatırlatmaları",
+  "eveningSummary": "Akşam özeti",
+  "allowNotifications": "Bildirimlere izin ver",
+  "notNow": "Şimdi değil",
+  "accountTitle": "Yolculuğunu kaydedelim",
+  "accountSubtitle": "İlerlemenin kaybolmaması için bir hesap oluştur.",
+  "continueWithApple": "Apple ile devam et",
+  "continueWithGoogle": "Google ile devam et",
+  "continueWithEmail": "E-posta ile devam et",
+  "orSeparator": "veya",
+  "termsNotice": "Devam ederek Kullanım Şartları ve Gizlilik Politikasını kabul etmiş olursun.",
+  "signUp": "Kayıt ol",
+  "signIn": "Giriş yap",
+  "emailLabel": "E-posta",
+  "passwordLabel": "Şifre",
+  "emailPasswordRequired": "E-posta ve şifreni gir.",
+  "categoryHealth": "Sağlık",
+  "categoryCareer": "Kariyer",
+  "categoryFinance": "Finans",
+  "categoryLearning": "Öğrenme",
+  "categoryRelationships": "İlişkiler",
+  "categorySpirituality": "Maneviyat",
+  "categoryPersonalGrowth": "Kişisel Gelişim",
+  "templateWeight": "Kilo",
+  "templateExerciseFrequency": "Egzersiz sıklığı",
+  "templateFreeGoal": "Serbest hedef",
+  "templateCareerLevel": "Seviye",
+  "templateTargetPosition": "Hedef pozisyon",
+  "templateSalary": "Maaş",
+  "templateSavings": "Birikim",
+  "templateGold": "Altın",
+  "templateCrypto": "Kripto",
+  "templateCardDebt": "Kart borcu",
+  "templateLanguageLevel": "Dil seviyesi",
+  "templateTopicCourse": "Konu / kurs",
+  "goalsLoadError": "Hedefler yüklenemedi. Bağlantını kontrol et.\n{error}",
+  "@goalsLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "statusNoGoals": "Henüz hedef eklemedin. İlk hedefinle yolculuğu başlat.",
+  "statusQuietWeek": "Bu hafta biraz sessiz geçti. Küçük bir adım bile Future You'yu yaklaştırır.",
+  "statusStreak": "{count} günlük serin var — geçen haftadan daha istikrarlı ilerliyorsun.",
+  "@statusStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "statusProgress": "{count, plural, other{Güzel gidiyorsun. Bu hafta {count} hedefinde ilerleme kaydettin.}}",
+  "@statusProgress": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "defaultUserName": "Gezgin",
+  "levelXp": "Level {level} • {xp} XP",
+  "@levelXp": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "todayProgress": "Bugünkü İlerleme",
+  "goalsProgressedCount": "{count, plural, other{{count} hedef ilerletildi}}",
+  "@goalsProgressedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dayStreak": "{count} günlük seri",
+  "@dayStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "freezeIndicator": "🧊 x{count}",
+  "@freezeIndicator": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "freezeDialogTitle": "Seri Dondurma 🧊",
+  "freezeDialogBody": "Bir günü kaçırırsan serini korur — atlanan gün hiç olmamış gibi devam edersin. Her ay 2 dondurma hakkı yenilenir ve gerektiğinde kendiliğinden kullanılır.",
+  "gotIt": "Anladım",
+  "noEmailInfo": "E-posta bilgisi yok",
+  "activeGoals": "Aktif Hedefler",
+  "weeklyChallengeTitle": "Bu Haftanın Meydan Okuması",
+  "plusXp": "+{xp} XP",
+  "@plusXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "challengeCompleted": "Tamamlandı! +{xp} XP kazandın 🎉",
+  "@challengeCompleted": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "inProgress": "Devam ediyor",
+  "percentOnly": "%{percent}",
+  "@percentOnly": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "percentWithEstimate": "%{percent} • tahmini {date}",
+  "@percentWithEstimate": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "estimatedDate": "tahmini {date}",
+  "@estimatedDate": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "goalCompleted": "Tamamlandı",
+  "completedGoalsTitle": "Tamamlanan Hedefler",
+  "completedGoalsEntry": "Tamamlanan Hedefler ({count})",
+  "@completedGoalsEntry": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completedOnDate": "Tamamlandı · {date}",
+  "@completedOnDate": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noCompletedGoalsYet": "Henüz tamamlanan hedef yok.",
+  "quickUpdate": "Hızlı güncelle",
+  "noGoalsYet": "Henüz hedefin yok",
+  "noGoalsYetSubtitle": "Future You seni bekliyor. İlk hedefini ekle.",
+  "addGoal": "Hedef ekle",
+  "newValueLabel": "Yeni değer",
+  "freeTextProgressQuestion": "Bu hedefte bugün ilerleme kaydettin mi?",
+  "recordProgressWithXp": "İlerleme kaydet (+{xp} XP)",
+  "@recordProgressWithXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "saveWithXp": "Kaydet (+{xp} XP)",
+  "@saveWithXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "saveFailed": "Kaydedilemedi, tekrar dene.",
+  "deleteDialogStreakTitle": "{streak} günlük serini bırakmak üzeresin",
+  "@deleteDialogStreakTitle": {
+    "placeholders": {
+      "streak": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteDialogGenericTitle": "İlerlemeni bırakmak üzeresin",
+  "deleteDialogMessageWithValues": "'{title}' hedefinde {from}'den {to}'ye kadar geldin ve {xp} XP kazandın. Bu hedefi silersen bu ilerleme geçmişi de silinir.",
+  "@deleteDialogMessageWithValues": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteDialogMessageXpOnly": "'{title}' hedefinde şimdiye kadar {xp} XP kazandın. Bu hedefi silersen bu ilerleme geçmişi de silinir.",
+  "@deleteDialogMessageXpOnly": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "goalLoadError": "Hedef yüklenemedi.\n{error}",
+  "@goalLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "goalNotFound": "Hedef bulunamadı.",
+  "deleteGoalTooltip": "Hedefi sil",
+  "keepGoing": "Devam etmek istiyorum",
+  "deleteAnyway": "Yine de sil",
+  "deleteFailed": "Silinemedi, tekrar dene.",
+  "nowValue": "Şimdi: {value}",
+  "@nowValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "targetValueText": "Hedef: {value}",
+  "@targetValueText": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "daysCount": "{count} gün",
+  "@daysCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "xpValue": "{xp} XP",
+  "@xpValue": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "streakLabel": "Seri",
+  "earnedLabel": "Kazanılan",
+  "recordProgress": "İlerleme kaydet",
+  "historyLabel": "Geçmiş",
+  "historyLoadError": "Geçmiş yüklenemedi.",
+  "noHistoryYet": "Henüz kayıt yok",
+  "progressRecorded": "İlerleme kaydedildi",
+  "addGoalTitle": "Hedef Ekle",
+  "whichArea": "Hangi alanda?",
+  "pickMetricFor": "{category} için bir metrik seç",
+  "@pickMetricFor": {
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "alreadyAdded": "Zaten eklendi",
+  "freeTextType": "Serbest metin",
+  "addGoalSubmit": "Hedefi ekle",
+  "goalAdded": "Hedef eklendi.",
+  "addFailed": "Eklenemedi, tekrar dene.",
+  "lifeMissions": "Hayat Görevleri",
+  "addMission": "Görev ekle",
+  "missionsLoadError": "Görevler yüklenemedi.\n{error}",
+  "@missionsLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "missionsSummary": "{total} görev · {completed} tamamlandı",
+  "@missionsSummary": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "completed": {
+        "type": "int"
+      }
+    }
+  },
+  "addedDaysAgo": "{count, plural, =0{Bugün eklendi} other{{count} gün önce eklendi}}",
+  "@addedDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completedLabel": "Tamamlandı",
+  "completedDaysAgo": "{count, plural, =0{Tamamlandı · bugün} other{Tamamlandı · {count} gün önce}}",
+  "@completedDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gentleReminder": "{count} gündür bu hedefe dokunmadın, hatırlaman için buradayız",
+  "@gentleReminder": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noNotesYet": "Henüz not yok",
+  "noMissionsYet": "Henüz görev yok",
+  "noMissionsYetSubtitle": "Hayatta yapmak istediklerini buraya ekle — küçük ya da büyük, hepsi sayılır.",
+  "missionTitleHint": "Ne başarmak istiyorsun?",
+  "missionLoadError": "Görev yüklenemedi.\n{error}",
+  "@missionLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "missionNotFound": "Görev bulunamadı.",
+  "addedOn": "Eklendi: {date}",
+  "@addedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "markCompleted": "Tamamlandı olarak işaretle",
+  "markIncomplete": "Tamamlanmadı olarak işaretle",
+  "notesLabel": "Notlar",
+  "missionNoteHint": "Bir gelişme, bir düşünce…",
+  "addNote": "Not ekle",
+  "noteAddFailed": "Not eklenemedi, tekrar dene.",
+  "deleteMissionTitle": "Görev silinsin mi?",
+  "deleteMissionConfirm": "Bu hedefi silmek istediğine emin misin?",
+  "lifeLessons": "Hayat Dersleri",
+  "share": "Paylaş",
+  "feedTab": "Akış",
+  "savedTab": "Kaydedilenler",
+  "lessonsLoadError": "Paylaşımlar yüklenemedi.\n{error}",
+  "@lessonsLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "noLessonsYet": "Henüz paylaşım yok",
+  "noLessonsYetSubtitle": "İlk dersi sen paylaş — biri buna ihtiyaç duyuyor olabilir.",
+  "noSavedLessonsYet": "Henüz kaydettiğin bir paylaşım yok",
+  "noSavedLessonsYetSubtitle": "Akıştan bookmark ikonuyla kaydettiklerin burada birikecek.",
+  "report": "Bildir",
+  "reportLessonConfirm": "Bu gönderiyi bildirmek istediğine emin misin?",
+  "reportCommentConfirm": "Bu yorumu bildirmek istediğine emin misin?",
+  "reportThanks": "Bildirdiğin için teşekkürler.",
+  "deleteLessonTitle": "Gönderi silinsin mi?",
+  "deleteLessonConfirm": "Bu gönderiyi silmek istediğine emin misin? Bu işlem geri alınamaz.",
+  "lessonTextHint": "Bir deneyimini veya pişmanlığını paylaş...",
+  "anonymousNotice": "Bu paylaşım anonim olarak görünecek.",
+  "profanityWarning": "Bu metin uygun olmayan bir ifade içeriyor gibi görünüyor, lütfen düzenle.",
+  "shareFailed": "Paylaşılamadı, tekrar dene.",
+  "commentsTitle": "Yorumlar",
+  "lessonLoadError": "Gönderi yüklenemedi.\n{error}",
+  "@lessonLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "lessonNotFound": "Gönderi bulunamadı.",
+  "commentsLoadError": "Yorumlar yüklenemedi.",
+  "noCommentsYet": "Henüz yorum yok — ilk yorumu sen yaz.",
+  "commentHint": "Anonim bir yorum yaz…",
+  "send": "Gönder",
+  "commentSendFailed": "Yorum gönderilemedi, tekrar dene.",
+  "justNow": "az önce",
+  "minutesAgo": "{count} dk önce",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "{count} sa önce",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysAgo": "{count} gün önce",
+  "@daysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "coachEmptyMessage": "Henüz hedefin yok. İlk hedefini eklediğinde Future You için sana özel düşünceler burada olacak.",
+  "coachStreakWithGoal": "{count} günlük serin var — bu tempo seni '{title}' hedefinde daha erken sonuca taşıyabilir.",
+  "@coachStreakWithGoal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachStreakGeneric": "{count} günlük serin var — bu istikrar Future You'ya yapılmış en iyi yatırım.",
+  "@coachStreakGeneric": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "coachNeglected": "'{title}' hedefin {days} gündür seni bekliyor. Küçük bir güncelleme bile ivmeyi geri getirir — hazır olduğunda oradayız.",
+  "@coachNeglected": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "coachTipRegular1": "'{title}' hedefinde bu ritmi koruyorsun, harika gidiyor.",
+  "@coachTipRegular1": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipRegular2": "'{title}' konusunda son günlerde gerçekten istikrarlısın.",
+  "@coachTipRegular2": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipRegular3": "'{title}' hedefin tam yolunda — böyle devam.",
+  "@coachTipRegular3": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipRegular4": "'{title}' için attığın düzenli adımlar birikmeye başladı bile.",
+  "@coachTipRegular4": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipRegular5": "'{title}' hedefindeki tempon Future You'nun işini kolaylaştırıyor.",
+  "@coachTipRegular5": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipRegular6": "'{title}' hedefinde ivmen yerinde; küçük adımlar büyük fark yaratıyor.",
+  "@coachTipRegular6": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipUntouched1": "'{title}' hedefine bugün küçük bir adım atsan nasıl olur?",
+  "@coachTipUntouched1": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipUntouched2": "'{title}' seni bekliyor — ne dersin?",
+  "@coachTipUntouched2": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipUntouched3": "'{title}' için ilk kaydı bugün açmak ister misin?",
+  "@coachTipUntouched3": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipUntouched4": "'{title}' hedefinde başlamak, en zor kısmın yarısıdır.",
+  "@coachTipUntouched4": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipUntouched5": "'{title}' için beş dakikalık bir başlangıç bile sayılır.",
+  "@coachTipUntouched5": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "coachTipUntouched6": "'{title}' hedefine giden yol ilk adımla açılır; bugün iyi bir gün.",
+  "@coachTipUntouched6": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "reflectionQuestion1": "Hedeflerine doğru attığın en küçük adım neydi bu hafta?",
+  "reflectionQuestion2": "Seni bu hafta en çok ne motive etti?",
+  "reflectionQuestion3": "Bugün gelecekteki halin için ne yaptın?",
+  "reflectionQuestion4": "Bir yıl önceki sen, bugünkü halini görse neye şaşırırdı?",
+  "reflectionQuestion5": "Bu hafta neyi ertelediğini fark ettin?",
+  "reflectionQuestion6": "Enerjini en çok ne tüketiyor, ne geri kazandırıyor?",
+  "reflectionQuestion7": "Hangi alışkanlığın seni hedefinden uzaklaştırıyor olabilir?",
+  "reflectionQuestion8": "Bugün kendine teşekkür etsen, ne için olurdu?",
+  "reflectionQuestion9": "Hedeflerinden hangisi seni gerçekten heyecanlandırıyor?",
+  "reflectionQuestion10": "Son bir ayda kendinle ilgili ne öğrendin?",
+  "reflectionQuestion11": "Yarın sabah tek bir şeyi farklı yapabilseydin, ne olurdu?",
+  "reflectionQuestion12": "Bu hafta kim ya da ne sana iyi geldi?",
+  "reflectionQuestion13": "Vazgeçmeyi düşündüğün ama devam ettiğin bir şey var mı?",
+  "reflectionQuestion14": "Beş yıl sonraki sen bugünkü sana ne tavsiye ederdi?",
+  "reflectionQuestion15": "Bugün seni gülümseten küçük bir an var mıydı?",
+  "reflectionQuestion16": "Hangi hedefin artık sana ait hissettirmiyor olabilir?",
+  "reflectionQuestion17": "Bu hafta hayır demen gereken ama evet dediğin bir şey oldu mu?",
+  "reflectionQuestion18": "Kendini en son ne zaman gerçekten dinlendin?",
+  "reflectionQuestion19": "İlerlemeni kimseyle kıyaslamadan değerlendirsen ne görürsün?",
+  "reflectionQuestion20": "Bugün başladığın işi yarına bırakmamanı sağlayan şey ne olurdu?",
+  "reflectionQuestion21": "Gelecekteki halinin günlük rutininde neler var?",
+  "reflectionQuestion22": "Bu ay bırakmak istediğin bir alışkanlık var mı? Yerine ne koyardın?",
+  "motivationalQuote1": "Bugün attığın her adım, yarınki sana bir hediye.",
+  "motivationalQuote2": "Gelecekteki sen, bugünkü kararlarının toplamı.",
+  "motivationalQuote3": "Küçük adımlar sessizdir ama en uzağa onlar taşır.",
+  "motivationalQuote4": "Mükemmel gün yok; sadece bugün var.",
+  "motivationalQuote5": "İstikrar, motivasyonun bittiği yerde başlar.",
+  "motivationalQuote6": "Bir yıl sonra, bugün başlamış olmayı dileyeceksin.",
+  "motivationalQuote7": "Yavaş ilerlemek, durmaktan sonsuz kat hızlıdır.",
+  "motivationalQuote8": "Kendine verdiğin sözler de tutulmayı hak eder.",
+  "motivationalQuote9": "Değişim büyük anlarda değil, sıradan günlerde olur.",
+  "motivationalQuote10": "Bugünün %1'i, yarının bambaşka bir versiyonudur.",
+  "motivationalQuote11": "Zor olan başlamak değil, yeniden başlamaktan korkmamak.",
+  "motivationalQuote12": "Future You seni izlemiyor; seninle birlikte yürüyor.",
+  "motivationalQuote13": "Hedef uzak görünebilir; adım hep bir adımlıktır.",
+  "motivationalQuote14": "Dinlenmek de ilerlemenin bir parçasıdır.",
+  "motivationalQuote15": "Dün ne olduysa olsun, bugün yeni bir kayıt günü.",
+  "motivationalQuote16": "En iyi yatırım aracın: kendine ayırdığın yirmi dakika.",
+  "actionTip1": "Büyük hedefleri küçük parçalara böl; bugün sadece ilk parçayı yap.",
+  "actionTip2": "Güne başlarken tek bir \"bugün bunu yapacağım\" cümlesi kur.",
+  "actionTip3": "İki dakikadan kısa süren işi erteleme, hemen yap.",
+  "actionTip4": "Yarının planını bu akşam iki cümleyle yaz.",
+  "actionTip5": "Bir hedefine takvimde 15 dakikalık sabit bir yer ayır.",
+  "actionTip6": "İlerlemeni haftada bir gözden geçir; rotayı küçükçe düzelt.",
+  "actionTip7": "Zor işi günün en enerjik saatine koy.",
+  "actionTip8": "Telefonu başka odaya bırakıp 25 dakikalık bir odak bloğu dene.",
+  "actionTip9": "Bir alışkanlığı mevcut bir rutine bağla: kahveden sonra beş sayfa.",
+  "actionTip10": "Bugün tek bir şeyi %80 yeterlilikte bitir; mükemmeli bekletme.",
+  "actionTip11": "Hedefini görünür bir yere yaz — göz önünde olan akılda kalır.",
+  "actionTip12": "Başlayamıyorsan kapsamı küçült: 10 dakikaya sığan versiyonu ne?",
+  "actionTip13": "Bittiğinde kendine küçük bir ödül tanımla ve sözünü tut.",
+  "actionTip14": "İvme kaybettiğinde en kolay adıma geri dön; zincir oradan kurulur.",
+  "actionTip15": "Bir engeli önceden tahmin et ve B planını şimdi yaz.",
+  "actionTip16": "Günün sonunda tek cümlelik bir \"bugün ne öğrendim\" notu düş.",
+  "coachTitle": "Gelecekteki Ben Koçu",
+  "coachSubtitle": "Bugün için birkaç düşünce",
+  "coachLoadError": "Coach yüklenemedi.\n{error}",
+  "@coachLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dailyQuestionTitle": "Günün sorusu",
+  "dailyQuoteTitle": "Günün sözü",
+  "dailyTipTitle": "Günün ipucu",
+  "todaysAnswer": "Bugünkü yanıtın: {answer}",
+  "@todaysAnswer": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
+  "answerButton": "Yanıtla",
+  "reflectionAnswerHint": "İçinden geldiği gibi yaz…",
+  "chapterTitleBeginning": "Başlangıç",
+  "chapterTitleComeback": "Geri Dönüş",
+  "chapterTitleLeap": "Sıçrama",
+  "chapterTitleDream": "Bir Hayal Daha",
+  "chapterTitleQuiet": "Sakin Hafta",
+  "chapterTitleSteady": "İstikrar",
+  "chapterTitleOnTheRoad": "Yol Alış",
+  "chapterFirstWeek": "Yolculuğun daha yeni başlıyor. İlk adımlar her zaman en önemlileridir — hazır olduğunda buradayız.",
+  "chapterQuietOpening1": "Bu hafta sakin geçti — bazen soluklanmak da yolculuğun parçası.",
+  "chapterQuietOpening2": "Bu hafta sakin bir hafta oldu; yeni hafta yeni bir sayfa.",
+  "chapterLowOpening1": "Bu hafta küçük ama değerli adımlar attın.",
+  "chapterLowOpening2": "Yavaş ama emin ilerledin bu hafta.",
+  "chapterMidOpening1": "Bu hafta iyi bir tempo tutturdun.",
+  "chapterMidOpening2": "Bu hafta düzenli ve kararlıydın; adımlar üst üste eklendi.",
+  "chapterHighOpening1": "Bu hafta güçlüydün — Future You bu haftayı hatırlayacak.",
+  "chapterHighOpening2": "Bu hafta adeta sıçradın; emeğin görünür oldu.",
+  "chapterComeback1": "Ara verdikten sonra geri dönmen, hiç durmamaktan daha değerli.",
+  "chapterComeback2": "Kısa bir duraksamanın ardından yola devam ettin — asıl güç bu.",
+  "chapterImproved": "'{title}' hedefinde gözle görülür yol aldın (+%{percent}).",
+  "@chapterImproved": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "chapterMissions": "{count, plural, =1{Bu hafta bir görevi tamamladın — listenden bir hayal daha gerçek oldu.} other{Bu hafta {count} görev tamamladın — hayaller birer birer gerçek oluyor.}}",
+  "@chapterMissions": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chaptersTitle": "Bölümler",
+  "chaptersLoadError": "Bölümler yüklenemedi.\n{error}",
+  "@chaptersLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "noChaptersYet": "Henüz bölüm yok — ilk tamamlanan haftanın sonunda hikâyen burada yazılacak.",
+  "chapterLabel": "BÖLÜM {number}",
+  "@chapterLabel": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "longestStreakLabel": "En uzun seri",
+  "missionsStatLabel": "Görev",
+  "featuredGoal": "Öne çıkan: {title}",
+  "@featuredGoal": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "chapterEntryTitle": "Bölüm {number}: {title}",
+  "@chapterEntryTitle": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "chapterEntrySubtitle": "Geçen haftanın hikâyesine göz at",
+  "yourLetters": "Mektupların",
+  "writeFirstLetter": "İlk mektubunu yaz",
+  "writeFirstLetterSubtitle": "Gelecekteki sana bugünden bir not bırak",
+  "lettersWaiting": "{count} mektup açılmayı bekliyor",
+  "@lettersWaiting": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lettersInJourney": "{count} mektup yolculukta",
+  "@lettersInJourney": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "letterToFuture": "Geleceğe Mektup",
+  "letterHint": "Gelecekteki sana ne söylemek istersin?",
+  "whenToDeliver": "Ne zaman ulaşsın?",
+  "inOneMonth": "1 ay sonra",
+  "inThreeMonths": "3 ay sonra",
+  "inSixMonths": "6 ay sonra",
+  "onGoalCompletionChip": "Hedef tamamlanınca",
+  "noActiveGoalForLetter": "Bağlanabilecek aktif bir hedefin yok. Önce bir hedef ekle ya da sabit bir tarih seç.",
+  "letterSealNote": "Mektubun mühürlenir; zamanı gelene kadar kimse (sen dahil) okuyamaz.",
+  "sealLetter": "Mektubu mühürle",
+  "letterSealed": "Mektubun mühürlendi.",
+  "sealFailed": "Mühürlenemedi, tekrar dene.",
+  "writeLetterTooltip": "Mektup yaz",
+  "lettersLoadError": "Mektuplar yüklenemedi.\n{error}",
+  "@lettersLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "sealedLetter": "Mühürlü mektup",
+  "opensToday": "Bugün açılacak",
+  "opensInDays": "{count} gün sonra açılacak",
+  "@opensInDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "opensOnGoalCompletion": "Hedefin tamamlanınca açılacak",
+  "notYetTime": "Henüz zamanı gelmedi — sabır da yolculuğun parçası.",
+  "letterArrivedTitle": "Geçmişten bir mektup geldi",
+  "tapToOpen": "Açmak için dokun",
+  "noLettersYet": "Henüz mektubun yok",
+  "noLettersYetSubtitle": "Bugünkü duygularını geleceğe taşı — gelecekteki sen okuduğunda bambaşka biri olacak.",
+  "letterTitle": "Mektup",
+  "letterLoadError": "Mektup yüklenemedi.\n{error}",
+  "@letterLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "letterNotFound": "Mektup bulunamadı.",
+  "letterStillSealed": "Bu mektup hâlâ mühürlü — zamanı gelince burada açılacak.",
+  "letterWrittenOn": "{date} tarihinde yazıldı",
+  "@letterWrittenOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "letterWrittenOnWithMonths": "{date} tarihinde yazıldı — {count} ay önce",
+  "@letterWrittenOnWithMonths": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "writeLetterToToday": "Bugünkü sana bir mektup yaz",
+  "plusPercent": "+%{percent}",
+  "@plusPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "languageLabel": "Dil / Language",
+  "languageTurkish": "Türkçe",
+  "languageEnglish": "English",
+  "levelUpCelebration": "Level {level}! 🎉",
+  "goalCompletedCelebration": "Hedef Tamamlandı! 🏆",
+  "@levelUpCelebration": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "badgeStreak7": "İlk Kıvılcım",
+  "badgeStreak30": "Alev Alev",
+  "badgeStreak100": "Durdurulamaz",
+  "badgeFirstGoal": "Yola Çıkış",
+  "badgeFirstGoalCompleted": "İlk Zafer",
+  "badgeGoals5": "Hedef Avcısı",
+  "badgeGoals10": "Hedef Ustası",
+  "badgeFirstMission": "Hayalperest",
+  "badgeFirstMissionCompleted": "Bir Hayal Gerçek",
+  "badgeMissions5": "Hayal Koleksiyoncusu",
+  "badgeFirstLesson": "Ses Ver",
+  "badgeFirstComment": "Destekçi",
+  "badgeLesson50Likes": "İlham Kaynağı",
+  "badgeComeback": "Geri Dönüş",
+  "badgeEarlyBird": "Erken Kalkan",
+  "badgeLevel10": "Yükseliş",
+  "badgeLevel25": "Efsane",
+  "achievementsTitle": "Başarılar",
+  "achievementsEntryTitle": "Başarılarını Gör",
+  "achievementsEntrySubtitle": "Rozetler ve kişisel rekorlar",
+  "personalRecords": "Kişisel Rekorların",
+  "recordLongestStreak": "En uzun seri",
+  "recordTotalXp": "Toplam XP",
+  "recordCompletedGoals": "Tamamlanan hedef",
+  "recordCompletedMissions": "Tamamlanan görev",
+  "recordFastestGoal": "En hızlı ilerleyen: {title}",
+  "@recordFastestGoal": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "badgesCount": "Rozetler ({unlocked}/{total})",
+  "@badgesCount": {
+    "placeholders": {
+      "unlocked": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "achievementsLoadError": "Başarılar yüklenemedi.\n{error}",
+  "@achievementsLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "navDashboard": "Panel",
+  "navMissions": "Görevler",
+  "navLessons": "Dersler",
+  "navCoach": "Koç",
+  "challengeThreeDayStreak": "3 farklı günde ilerleme kaydet",
+  "challengeTwoGoals": "2 farklı hedefte ilerleme kaydet",
+  "challengeMissionNote": "Bir göreve not ekle",
+  "challengeReflection": "Coach'ın günün sorusunu yanıtla",
+  "challengeComment": "Hayat Dersleri'nde bir gönderiye yorum yap",
+  "challengeTenPercent": "Bir hedefte %10 ilerleme kaydet"
+}

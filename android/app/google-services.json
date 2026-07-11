@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "1027438147075",
+    "project_id": "future-self-app-99f0b",
+    "storage_bucket": "future-self-app-99f0b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027438147075:android:9df624acec49b039844036",
+        "android_client_info": {
+          "package_name": "com.example.future_self"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027438147075-4vronau7o3lgnnqtd1cqhi3pm8tkkbbq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.future_self",
+            "certificate_hash": "2f460662d5b1d0feb71e8ceffc07e3b16dd9c190"
+          }
+        },
+        {
+          "client_id": "1027438147075-3tcg0ap61fh3tb351ha49p7baoq0mq16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw-i5zfW0J0bvu_z_49JYwOvFMyxSjrJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027438147075-3tcg0ap61fh3tb351ha49p7baoq0mq16.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1027438147075-ef8qf8tqgbhaha724siu470562ij4llb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mirackeser.futureself"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027438147075:android:a51e7b4abc22a184844036",
+        "android_client_info": {
+          "package_name": "com.mirackeser.futureself"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027438147075-m9fm2881vdgkpb92gh09i6s294o9u2ug.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mirackeser.futureself",
+            "certificate_hash": "2f460662d5b1d0feb71e8ceffc07e3b16dd9c190"
+          }
+        },
+        {
+          "client_id": "1027438147075-3tcg0ap61fh3tb351ha49p7baoq0mq16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw-i5zfW0J0bvu_z_49JYwOvFMyxSjrJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027438147075-3tcg0ap61fh3tb351ha49p7baoq0mq16.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1027438147075-ef8qf8tqgbhaha724siu470562ij4llb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mirackeser.futureself"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

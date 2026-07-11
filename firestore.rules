@@ -1,0 +1,145 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Üst lesson dokümanının yazarı mı? (Cascade silme için: yazar,
+    // gönderisini silerken alt koleksiyonlardaki başkalarına ait
+    // marker/yorum dokümanlarını da temizler. Batch içinde get()
+    // yazma-öncesi durumu görür, lesson henüz silinmemiş olur.)
+    function isLessonAuthor(lessonId) {
+      return isSignedIn()
+        && get(/databases/$(database)/documents/lessons/$(lessonId))
+            .data.authorUid == request.auth.uid;
+    }
+
+    // Sayaç alanı ya bu update'te hiç değişmemiş ya da tam olarak ±1
+    // değişmiş olmalı (istemci her zaman FieldValue.increment(±1)
+    // kullanır; keyfi değer yazılamaz).
+    function counterDeltaOk(name) {
+      return !request.resource.data.diff(resource.data)
+              .affectedKeys().hasAny([name])
+        || (request.resource.data[name] is int
+            && (request.resource.data[name] == resource.data.get(name, 0) + 1
+                || request.resource.data[name] == resource.data.get(name, 0) - 1));
+    }
+
+    // ---- Kişisel alan: kullanıcı sadece kendi alt ağacını okur/yazar.
+    match /users/{uid} {
+      allow read, write: if isSignedIn() && request.auth.uid == uid;
+
+      // goals ve altındaki history dahil tüm alt ağaç.
+      match /{document=**} {
+        allow read, write: if isSignedIn() && request.auth.uid == uid;
+      }
+    }
+
+    // ---- Life Lessons: herkese açık anonim akış.
+    match /lessons/{lessonId} {
+      allow read: if isSignedIn();
+      // authorUid sahtelenemesin.
+      allow create: if isSignedIn()
+        && request.resource.data.authorUid == request.auth.uid;
+      // İki update senaryosu:
+      // (a) yazar kendi gönderisinin text/category alanlarını düzenler
+      //     (hasOnly kısıtı authorUid'in değişmemesini de garantiler);
+      // (b) herhangi bir kullanıcı sadece sayaçları günceller
+      //     (like/save/comment/report akışları) — her sayaç en fazla
+      //     ±1 değişebilir.
+      allow update: if isSignedIn() && (
+        (resource.data.authorUid == request.auth.uid
+          && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['text', 'category']))
+        || (request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['likeCount', 'saveCount', 'commentCount', 'reportCount'])
+            && counterDeltaOk('likeCount')
+            && counterDeltaOk('saveCount')
+            && counterDeltaOk('commentCount')
+            && counterDeltaOk('reportCount'))
+      );
+      // Sadece yazar silebilir.
+      allow delete: if isSignedIn()
+        && resource.data.authorUid == request.auth.uid;
+
+      // Marker koleksiyonları: herkes okuyabilir (sayaç tutarlılığı /
+      // "ben beğenmiş miyim" kontrolü), sadece kendi {uid} dokümanı
+      // yazılabilir.
+      match /likes/{uid} {
+        allow read: if isSignedIn();
+        allow create: if isSignedIn() && request.auth.uid == uid;
+        allow delete: if isSignedIn()
+          && (request.auth.uid == uid || isLessonAuthor(lessonId));
+      }
+      match /saves/{uid} {
+        allow read: if isSignedIn();
+        allow create: if isSignedIn() && request.auth.uid == uid;
+        allow delete: if isSignedIn()
+          && (request.auth.uid == uid || isLessonAuthor(lessonId));
+      }
+      match /reports/{uid} {
+        allow read: if isSignedIn();
+        // Bildirim UI'dan geri alınmaz; kendi marker'ını silme hakkı
+        // hesap silme (GDPR) için gerekir. Yazar da gönderiyi silerken
+        // cascade ile temizler. reportCount kasten azaltılmaz (silinen
+        // hesap tekrar bildiremeyeceği için moderasyon sinyali tutarlı).
+        allow create: if isSignedIn() && request.auth.uid == uid;
+        allow delete: if isSignedIn()
+          && (request.auth.uid == uid || isLessonAuthor(lessonId));
+      }
+
+      match /comments/{commentId} {
+        allow read: if isSignedIn();
+        allow create: if isSignedIn()
+          && request.resource.data.authorUid == request.auth.uid;
+        // Yorumda da sadece sayaçlar güncellenebilir (en fazla ±1).
+        allow update: if isSignedIn()
+          && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['likeCount', 'reportCount'])
+          && counterDeltaOk('likeCount')
+          && counterDeltaOk('reportCount');
+        // Kullanıcı kendi yorumunu, lesson yazarı da gönderisini
+        // silerken (cascade) tüm yorumları silebilir.
+        allow delete: if isSignedIn()
+          && (resource.data.authorUid == request.auth.uid
+              || isLessonAuthor(lessonId));
+
+        match /reports/{uid} {
+          allow read: if isSignedIn();
+          allow create: if isSignedIn() && request.auth.uid == uid;
+          // Hesap silme: kullanıcı kendi report marker'ını temizler.
+          allow delete: if isSignedIn() && request.auth.uid == uid;
+        }
+      }
+    }
+
+    // Collection group sorguları nested match'lerden GEÇMEZ; marker
+    // koleksiyonlarının group sorguları için (kaydedilenler listesi +
+    // hesap silme taraması) bu bloklar gerekli. Koşul doc id yerine
+    // uid ALANI üzerinden yazılır: list sorgusunda kural, sorgunun
+    // where('uid' == ben) filtresinden kanıtlanabilmeli (doc id'ye
+    // yazılan koşulu alan filtresi kanıtlayamaz, sorgu reddedilir).
+    match /{path=**}/saves/{uid} {
+      allow read: if isSignedIn() && resource.data.uid == request.auth.uid;
+    }
+    match /{path=**}/likes/{uid} {
+      allow read: if isSignedIn() && resource.data.uid == request.auth.uid;
+    }
+    match /{path=**}/reports/{uid} {
+      allow read: if isSignedIn() && resource.data.uid == request.auth.uid;
+    }
+
+    // Haftalık challenge (commentOnLesson) kullanıcının kendi yorumlarını
+    // collection group ile sayar; sorgu authorUid == ben filtresiyle gelir.
+    match /{path=**}/comments/{commentId} {
+      allow read: if isSignedIn()
+        && resource.data.authorUid == request.auth.uid;
+    }
+
+    // Diğer her şey varsayılan olarak kapalı.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
